@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "S_Stat.h"
 #include "S_BaseCharacter.generated.h"
 
 UCLASS()
@@ -15,19 +16,27 @@ public:
 	// Sets default values for this character's properties
 	AS_BaseCharacter();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void SetupDefaultStats();
+
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	US_Stat* GetStat(EStatsType _statType);
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Stats")
+	TArray<FDefaultStats> m_defaultStats;
+
 private:
 	class US_Inventory* m_inventory;
 
-	TArray<class US_Stat*> m_stats;
+	TArray<US_Stat*> m_stats;
 };
