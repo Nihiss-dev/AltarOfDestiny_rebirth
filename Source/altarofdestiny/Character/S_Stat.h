@@ -48,9 +48,20 @@ class ALTAROFDESTINY_API US_Stat : public UObject
 {
 	GENERATED_BODY()
 
+#pragma region Functions
 public:
 	US_Stat();
 	static US_Stat* Construct(EStatsType _statType, FName _statName, float _minValue, float _maxValue, float _regenerationTime, float _regenerationInterval);
+
+protected:
+
+private:
+
+#pragma endregion //Functions
+
+#pragma region Variables
+
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EStatsType m_statType;
@@ -74,4 +85,10 @@ public:
 	float m_regenerationInterval;
 
 	FTimerHandle TimerHandle_Regeneration;
+
+protected:
+
+private:
+
+#pragma endregion //Variables
 };

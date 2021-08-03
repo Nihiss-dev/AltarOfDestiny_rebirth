@@ -7,9 +7,3 @@
 /**
  * 
  */
-class ALTAROFDESTINY_API S_Types
-{
-public:
-	S_Types();
-	~S_Types();
-};

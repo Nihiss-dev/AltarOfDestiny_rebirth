@@ -10,6 +10,12 @@ AS_BaseCharacter::AS_BaseCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	bReplicates = true;
+	m_inventory = CreateDefaultSubobject<US_Inventory>(TEXT("Inventory"));
+	if (m_inventory)
+	{
+		m_inventory->SetIsReplicated(true);
+	}
 }
 
 // Called every frame
@@ -39,7 +45,7 @@ US_Stat* AS_BaseCharacter::GetStat(EStatsType _statType)
 {
 	for (US_Stat* stat : m_stats)
 	{
-		if (stat->m_statType == _statType)
+		if (stat && stat->m_statType == _statType)
 		{
 			return stat;
 		}
@@ -52,7 +58,10 @@ void AS_BaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	m_inventory = NewObject<US_Inventory>(this, US_Inventory::StaticClass());
-
 	SetupDefaultStats();
+}
+
+void AS_BaseCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 }

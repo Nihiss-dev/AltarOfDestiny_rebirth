@@ -14,4 +14,21 @@ class ALTAROFDESTINY_API AS_GameState : public AGameStateBase
 {
 	GENERATED_BODY()
 	
+#pragma region Functions
+public:
+
+protected:
+
+private:
+
+#pragma endregion //Functions
+
+#pragma region Variables
+public:
+
+protected:
+
+private:
+
+#pragma endregion //Variables
 };

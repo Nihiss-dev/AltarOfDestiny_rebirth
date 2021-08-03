@@ -12,6 +12,7 @@ class AS_PlayerCharacter : public AS_BaseCharacter
 {
 	GENERATED_BODY()
 
+#pragma region Functions
 
 public:
 	AS_PlayerCharacter();
@@ -55,6 +56,10 @@ protected:
 	/** Handler for when a touch input stops. */
 	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
+#pragma endregion //Functions
+
+#pragma region Variables
+
 public:
 
 	/** Camera boom positioning the camera behind the character */
@@ -72,5 +77,7 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
+
+#pragma endregion //Variables
 };
 

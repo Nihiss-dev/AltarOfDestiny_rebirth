@@ -11,8 +11,24 @@ class AS_GameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
+#pragma region Functions
 public:
 	AS_GameMode();
+
+protected:
+
+private:
+
+#pragma endregion //Functions
+
+#pragma region Variables
+public:
+
+protected:
+
+private:
+
+#pragma endregion //Variables
 };
 
 

@@ -9,7 +9,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 
-#include "../Inventory/S_Inventory.h"
+//#include "../Inventory/S_Inventory.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AS_PlayerCharacter

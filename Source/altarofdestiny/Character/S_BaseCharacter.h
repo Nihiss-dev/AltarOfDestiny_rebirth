@@ -12,6 +12,7 @@ class ALTAROFDESTINY_API AS_BaseCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+#pragma region Functions
 public:
 	// Sets default values for this character's properties
 	AS_BaseCharacter();
@@ -30,6 +31,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+#pragma endregion //Functions
+
+#pragma region Variables
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Stats")
@@ -39,4 +45,6 @@ private:
 	class US_Inventory* m_inventory;
 
 	TArray<US_Stat*> m_stats;
+
+#pragma endregion //Variables
 };
