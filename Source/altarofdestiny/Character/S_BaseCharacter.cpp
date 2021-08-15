@@ -53,6 +53,11 @@ US_Stat* AS_BaseCharacter::GetStat(EStatsType _statType)
 	return nullptr;
 }
 
+void AS_BaseCharacter::OnRep_PlayerState()
+{
+	OnPlayerStateUpdated.Broadcast();
+}
+
 // Called when the game starts or when spawned
 void AS_BaseCharacter::BeginPlay()
 {

@@ -6,6 +6,8 @@
 #include "GameFramework/PlayerState.h"
 #include "S_PlayerState.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayerNameUpdated, FString, PlayerName);
+
 /**
  * 
  */
@@ -17,6 +19,11 @@ class ALTAROFDESTINY_API AS_PlayerState : public APlayerState
 #pragma region Functions
 public:
 
+	AS_PlayerState();
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	virtual void OnRep_PlayerName() override;
 protected:
 
 private:
@@ -26,9 +33,11 @@ private:
 #pragma region Variables
 public:
 
+	UPROPERTY(BlueprintAssignable)
+	FOnPlayerNameUpdated OnPlayerNameUpdated;
+
 protected:
 
 private:
-
 #pragma endregion //Variables
 };

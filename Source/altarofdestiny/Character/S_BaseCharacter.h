@@ -7,6 +7,8 @@
 #include "S_Stat.h"
 #include "S_BaseCharacter.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerStateUpdated);
+
 UCLASS()
 class ALTAROFDESTINY_API AS_BaseCharacter : public ACharacter
 {
@@ -28,6 +30,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	US_Stat* GetStat(EStatsType _statType);
 
+	virtual void OnRep_PlayerState() override;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -40,6 +44,15 @@ protected:
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Stats")
 	TArray<FDefaultStats> m_defaultStats;
+
+#pragma region Delegates
+
+	UPROPERTY(BlueprintAssignable)
+	FOnPlayerStateUpdated OnPlayerStateUpdated;
+
+#pragma endregion //Delegates
+
+protected:
 
 private:
 	class US_Inventory* m_inventory;

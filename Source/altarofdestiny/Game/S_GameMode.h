@@ -15,6 +15,10 @@ class AS_GameMode : public AGameModeBase
 public:
 	AS_GameMode();
 
+	virtual void PreLogin(const FString& Options, const FString& Address, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage) override;
+	virtual APlayerController* Login(UPlayer* NewPlayer, ENetRole InRemoteRole, const FString& Portal, const FString& Options, const FUniqueNetIdRepl& UniqueId, FString& ErrorMessage);
+	virtual void PostLogin(APlayerController* _newPlayerController) override;
+	virtual void Logout(AController* _leavingController) override;
 protected:
 
 private:
@@ -30,6 +34,3 @@ private:
 
 #pragma endregion //Variables
 };
-
-
-
